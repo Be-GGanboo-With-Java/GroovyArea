@@ -1,6 +1,5 @@
 package com.daniel.danieltheraisinglivestock.breedroutine.domain;
 
-import com.daniel.danieltheraisinglivestock.livestock.domain.LiveStock;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
- * 가축 도메인 엔티티
+ * 가축 사육 루틴 도메인 엔티티
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class BreedRoutine {
@@ -42,8 +41,6 @@ public class BreedRoutine {
 
     // 먹이 주는 행위
     public boolean feed(LiveStock liveStock, BreedRoutineId dailyBreedId) {
-        liveStock.eat(liveStock);
-
         Routine feeding = new Routine(
                 this.id,
                 dailyBreedId,
@@ -55,13 +52,38 @@ public class BreedRoutine {
     }
 
     // 백신 맞히는 행위
-    public boolean vaccinate() {
-        return
+    public boolean vaccinate(LiveStock liveStock, BreedRoutineId dailyBreedId) {
+        Routine vaccinating = new Routine(
+                this.id,
+                dailyBreedId,
+                LocalDateTime.now(),
+                liveStock
+        );
+        this.dailyRoutine.addRoutine(vaccinating);
+        return true;
     }
 
     // 방목시키는 행위
-    public boolean graze() {
-        return
+    public boolean graze(LiveStock liveStock, BreedRoutineId dailyRoutineId) {
+        Routine grazing = new Routine(
+                this.id,
+                dailyRoutineId,
+                LocalDateTime.now(),
+                liveStock
+        );
+        this.dailyRoutine.addRoutine(grazing);
+        return true;
+    }
+
+    public boolean makeWork(LiveStock liveStock, BreedRoutineId dailyRoutineId) {
+        Routine makeWorking = new Routine(
+                this.id,
+                dailyRoutineId,
+                LocalDateTime.now(),
+                liveStock
+        );
+        this.dailyRoutine.addRoutine(makeWorking);
+        return true;
     }
 
     @Value
