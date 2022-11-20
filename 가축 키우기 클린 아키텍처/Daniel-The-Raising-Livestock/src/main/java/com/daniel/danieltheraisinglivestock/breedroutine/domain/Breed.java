@@ -12,7 +12,7 @@ import java.util.Optional;
  * 가축 사육 루틴 도메인 엔티티
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class BreedRoutine {
+public class Breed {
 
     private final BreedRoutineId id;
 
@@ -22,17 +22,17 @@ public class BreedRoutine {
     @Getter
     private final DailyRoutine dailyRoutine;
 
-    public static BreedRoutine withoutId(
+    public static Breed withoutId(
             LiveStock liveStock,
             DailyRoutine dailyActivity) {
-        return new BreedRoutine(null, liveStock, dailyActivity);
+        return new Breed(null, liveStock, dailyActivity);
     }
 
-    public static BreedRoutine withId(
+    public static Breed withId(
             BreedRoutineId breedRoutineId,
             LiveStock liveStock,
             DailyRoutine dailyActivity) {
-        return new BreedRoutine(breedRoutineId, liveStock, dailyActivity);
+        return new Breed(breedRoutineId, liveStock, dailyActivity);
     }
 
     public Optional<BreedRoutineId> getId() {
