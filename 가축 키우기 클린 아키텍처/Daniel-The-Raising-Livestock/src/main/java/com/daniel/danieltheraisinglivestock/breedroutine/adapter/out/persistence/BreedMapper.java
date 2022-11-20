@@ -20,7 +20,7 @@ class BreedMapper {
         LiveStock liveStock = LiveStock.of(healthValue);
 
         return Breed.withId(
-                new Breed.BreedRoutineId(breedJpaEntity.getId()),
+                new Breed.BreedId(breedJpaEntity.getId()),
                 liveStock,
                 toDailyRoutine(routineJpaEntities));
     }
@@ -31,8 +31,8 @@ class BreedMapper {
         for (RoutineJpaEntity routine : routineJpaEntities) {
             routines.add(new Routine(
                     new Routine.RoutineId(routine.getId()),
-                    new Breed.BreedRoutineId(routine.getAdminBreedId()),
-                    new Breed.BreedRoutineId(routine.getDailyBreedId()),
+                    new Breed.BreedId(routine.getAdminBreedId()),
+                    new Breed.BreedId(routine.getDailyBreedId()),
                     routine.getTime(),
                     LiveStock.of(routine.getHealth())
 

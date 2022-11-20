@@ -15,7 +15,7 @@ public class LiveStock {
     public static LiveStock DEAD = LiveStock.of(ZERO_HEALTH);
 
     @NonNull
-    private final Integer healthValue;
+    Integer healthValue;
 
     public static LiveStock add(LiveStock a, LiveStock b) {
         return new LiveStock(a.healthValue + b.healthValue);

@@ -18,12 +18,12 @@ public class Routine {
     // 사육 총 관리자 아이디
     @Getter
     @NonNull
-    private final Breed.BreedRoutineId adminBreedId;
+    private final Breed.BreedId adminBreedId;
 
     // 데일리 관리자 아이디
     @Getter
     @NonNull
-    private final Breed.BreedRoutineId dailyBreedId;
+    private final Breed.BreedId dailyBreedId;
 
     // 루틴 실시 시간
     @Getter
@@ -36,8 +36,8 @@ public class Routine {
     private final LiveStock liveStock;
 
     public Routine(
-            @NonNull Breed.BreedRoutineId adminBreedId,
-            @NonNull Breed.BreedRoutineId dailyBreedId,
+            @NonNull Breed.BreedId adminBreedId,
+            @NonNull Breed.BreedId dailyBreedId,
             @NonNull LocalDateTime time,
             @NonNull LiveStock liveStock) {
         this.id = null;

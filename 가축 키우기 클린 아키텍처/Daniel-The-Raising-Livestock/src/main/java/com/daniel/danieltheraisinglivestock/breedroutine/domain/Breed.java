@@ -14,7 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Breed {
 
-    private final BreedRoutineId id;
+    private final BreedId id;
 
     @Getter
     private final LiveStock liveStock;
@@ -29,18 +29,18 @@ public class Breed {
     }
 
     public static Breed withId(
-            BreedRoutineId breedRoutineId,
+            BreedId breedRoutineId,
             LiveStock liveStock,
             DailyRoutine dailyActivity) {
         return new Breed(breedRoutineId, liveStock, dailyActivity);
     }
 
-    public Optional<BreedRoutineId> getId() {
+    public Optional<BreedId> getId() {
         return Optional.ofNullable(this.id);
     }
 
     // 먹이 주는 행위
-    public boolean feed(LiveStock liveStock, BreedRoutineId dailyBreedId) {
+    public boolean feed(LiveStock liveStock, BreedId dailyBreedId) {
         Routine feeding = new Routine(
                 this.id,
                 dailyBreedId,
@@ -52,7 +52,7 @@ public class Breed {
     }
 
     // 백신 맞히는 행위
-    public boolean vaccinate(LiveStock liveStock, BreedRoutineId dailyBreedId) {
+    public boolean vaccinate(LiveStock liveStock, BreedId dailyBreedId) {
         Routine vaccinating = new Routine(
                 this.id,
                 dailyBreedId,
@@ -64,7 +64,7 @@ public class Breed {
     }
 
     // 방목시키는 행위
-    public boolean graze(LiveStock liveStock, BreedRoutineId dailyRoutineId) {
+    public boolean graze(LiveStock liveStock, BreedId dailyRoutineId) {
         Routine grazing = new Routine(
                 this.id,
                 dailyRoutineId,
@@ -75,7 +75,8 @@ public class Breed {
         return true;
     }
 
-    public boolean makeWork(LiveStock liveStock, BreedRoutineId dailyRoutineId) {
+    // 가축 일 시켜
+    public boolean makeWork(LiveStock liveStock, BreedId dailyRoutineId) {
         Routine makeWorking = new Routine(
                 this.id,
                 dailyRoutineId,
@@ -87,7 +88,7 @@ public class Breed {
     }
 
     @Value
-    public static class BreedRoutineId {
-        private long id;
+    public static class BreedId { 
+        long id;
     }
 }
